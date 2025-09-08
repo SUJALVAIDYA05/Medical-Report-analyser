@@ -6,16 +6,30 @@
   <link href="styles/index.css" rel="stylesheet">
     <title>Medical Report Analyser</title>
 </head>
-<body>
+<body style="background-color: #f5f9fc;">
     <%-include("header.ejs")%>
 
 
-<h1 style="text-align: center;"> Medical Report analyser</h1>
+<h1 style="text-align: center;"> Medical Report Analyser</h1>
 
 
+<div class="container col-xxl-8 px-4 py-5" >
+     <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+     <div class="col-10 col-sm-8 col-lg-6">
+     <img src="img.jpg" class="d-block mx-lg-auto img-fluid"alt="Bootstrap Themes" width="700" height="500" loading="lazy"> 
+</div>
+ <div class="col-lg-6"> 
+    <h1 class="display-6 fw-bold text-body-emphasis lh-1 ">what this website does</h1>
+     <p class="lead">this website is a medical report scanner,it scans the your medical report and</p> 
+    </div> </div> </div>
 
-
-
+<div class="mxx">
+    <h2 class=" display-7 fw-bold text-body-emphasis lh-1 mb-3">Add The Report To Ananlyse</h2>
+    <form action="http://localhost:5000/upload" method="POST" enctype="multipart/form-data">
+    <input type="file" name="image" accept="image/*" required>
+    <br><br>
+    <button type="submit" class="mb-3">Upload</button>
+  </form></div>
 
     <%-include("footer.ejs")%>
 </body>
