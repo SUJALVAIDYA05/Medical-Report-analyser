@@ -35,8 +35,14 @@ app.post("/upload", upload.single("image"), (req, res) => {
   if (!req.file) {
     return res.status(400).send("No file uploaded.");
   }
-  res.send(`Image uploaded successfully: <br><img src="/${req.file.path}" width="200">`);
+  res.render("report.ejs");
 });
+app.get("/sign",(req,res)=>{
+    res.render("signup.ejs");
+})
+app.get("/login",(req,res)=>{
+    res.render("login.ejs");
+})
 
 app.listen(port,()=>{
     console.log(`server running at ${port}`);
