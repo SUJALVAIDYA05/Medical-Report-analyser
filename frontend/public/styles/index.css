@@ -5,9 +5,34 @@
 
 .txt{
     color: white;
+    text-decoration: none;
 }
 .mxx{
-    margin-left:125px ;
+    margin-left:10% ;
+}
+.for{
+    border-radius: 50px;
+    background-color: whitesmoke;
+     margin-left: 35%;
+
+}
+.lgbody{
+    background-image:url(https://png.pngtree.com/background/20210709/original/pngtree-2-5d-see-a-doctor-medical-hospital-picture-image_930646.jpg);
+    background-size: cover; 
+      background-position: center; 
+      background-repeat: no-repeat;
+
+
+}
+
+.mxxy{
+    margin-left: 35%;
+    background-color: #1877f2;
+    max-width: 400px;
+    min-height: 125px;
+    border-radius: 50px;
+    padding-top: 20px;
+    
 }
         
         .login-card {
@@ -373,4 +398,7 @@
         }
         .myy{
             margin-left: 450px;
+        }
+        .padd{
+            margin-right: 20px;
         }

@@ -44,6 +44,10 @@ app.get("/login",(req,res)=>{
     res.render("login.ejs");
 })
 
+
+app.get("/send",(req,res)=>{
+    res.render("send.ejs");
+})
 app.listen(port,()=>{
     console.log(`server running at ${port}`);
 })

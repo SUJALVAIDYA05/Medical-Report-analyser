@@ -11,7 +11,7 @@
     <%-include("header.ejs")%>
 
 
-<h1 style="text-align: center;"> Medical Report Analyser</h1>
+<h1 style="text-align: center">Medical Report Analyser</h1>
 
 
 <div class="container col-xxl-8 px-4 py-5" >
@@ -24,13 +24,10 @@
      <p class="lead pt-2">Medical report analysis is simply the process of taking complicated medical test results and explaining them in easy-to-understand language. When you go to the doctor and get blood tests, X-rays, or other medical examinations, you receive reports filled with confusing medical terms, strange abbreviations, and numbers that don't make sense to most people. </p> 
     </div> </div> </div>
 
-<div class="mxx">
-    <h2 class=" display-7 fw-bold text-body-emphasis lh-1 mb-3">Add The Report To Ananlyse</h2>
-    <form action="http://localhost:5000/upload" method="POST" enctype="multipart/form-data">
-    <input type="file" name="image" accept="image/*" required>
-    <br><br>
-    <button type="submit" class="mb-3">Upload</button>
-  </form></div>
+<div class="mxx mb-5">
+    <h2 class="mb-3" style="text-align: center; margin-right: 100px;">Add The Report To Ananlyse</h2>
+    <button class="btn btn-primary " type="button" style="margin-left: 40%;"><a href="http://localhost:5000/send" class="txt">Scan Report</a></button>
+</div>
 
     <%-include("footer.ejs")%>
 </body>
