@@ -48,6 +48,11 @@ app.get("/login",(req,res)=>{
 app.get("/send",(req,res)=>{
     res.render("send.ejs");
 })
+
+
+app.get("/cnct",(req,res)=>{
+    res.render("contact.ejs");
+})
 app.listen(port,()=>{
     console.log(`server running at ${port}`);
 })

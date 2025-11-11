@@ -1,45 +1,67 @@
 import pytesseract
 from PIL import Image
-import cv2
-import csv
+import json
 import os
 
-# 👇 If you're on Windows, set the Tesseract OCR path (uncomment if needed)
-# pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+# --- IMPORTANT SETUP ---
+# Set the path to your Tesseract installation
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+# -----------------------
 
+def image_to_json(image_path: str, output_filepath: str) -> str:
+    """
+    Accepts an image path, performs OCR, and saves the extracted text
+    as a list of strings (line by line) in a JSON file.
 
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+    Args:
+        image_path: The file path to the image (e.g., 'lab_report.png').
+        output_filepath: The path where the JSON file will be saved.
 
+    Returns:
+        A confirmation message or an error message.
+    """
+    if not os.path.exists(image_path):
+        return f"Error: Image file not found at: {image_path}"
 
-
-def extract_text_by_lines_csv(image_path, csv_filename="text_lines.csv"):
-    """Extract text line by line and save to CSV"""
     try:
-        if not os.path.exists(image_path):
-            raise FileNotFoundError(f"Image not found: {image_path}")
-
+        # 1. Perform OCR
         img = Image.open(image_path)
-        text = pytesseract.image_to_string(img)
-        lines = [line.strip() for line in text.split('\n') if line.strip()]
+        custom_config = r'--oem 3 --psm 6'
+        raw_text = pytesseract.image_to_string(img, config=custom_config)
 
-        with open(csv_filename, 'w', newline='', encoding='utf-8') as csvfile:
-            writer = csv.writer(csvfile)
-            writer.writerow(['Line Number', 'Text'])
-            for idx, line in enumerate(lines, 1):
-                writer.writerow([idx, line])
+        # 2. Clean and Structure the Data
+        
+        # --- THIS IS THE KEY CHANGE ---
+        # Instead of joining the lines, create a list of non-empty, stripped lines.
+        lines_list = [line.strip() for line in raw_text.splitlines() if line.strip()]
+        # --- END OF CHANGE ---
 
-        print(f"✅ Text lines extracted and saved to {csv_filename}")
-        return True
+        json_output = {
+            "image_source": os.path.basename(image_path),
+            "extracted_text": lines_list,  # The value is now the list of strings
+            "line_count": len(lines_list)
+        }
+        
+        # 3. Write the JSON object to the specified file
+        with open(output_filepath, 'w', encoding='utf-8') as f:
+            json.dump(json_output, f, indent=4)
 
+        return f"Success! OCR results saved to: {output_filepath}"
+
+    except pytesseract.TesseractNotFoundError:
+        return "Error: Tesseract is not installed or not in your PATH. Please check 'pytesseract.tesseract_cmd'."
     except Exception as e:
-        print(f"❌ Error: {e}")
-        return False
+        return f"An unexpected error occurred: {str(e)}"
 
 
-if __name__ == "__main__":
-    # ✅ Your image path (exact as you said)
-    image_path = r"C:\Users\admin\OneDrive\Desktop\mini_project\frontend\uploads\1760333893793.jpg"
-   
+# --- Example Usage ---
+# 1. Define the input image path (use 'r' for raw string)
+image_file = r'C:\Users\admin\OneDrive\Desktop\mini_project\frontend\uploads\1762797344275.jpg'
 
-    print("\n=== Extracting text by lines ===")
-    extract_text_by_lines_csv(image_path, "text_lines.csv")
+# 2. Define the output JSON file path (use 'r' for raw string)
+output_file = r'C:\Users\admin\OneDrive\Desktop\mini_project\backend\result.json'
+
+# Execute the function and print the status message
+status_message = image_to_json(image_file, output_file)
+
+print(status_message)
