@@ -8,7 +8,7 @@ import os
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 # -----------------------
 
-def image_to_json(image_path: str, output_filepath: str) -> str:
+def image_to_json(image_path: str, output_filepath: str = r'C:\Users\admin\OneDrive\Desktop\mini_project\backend\result.json') -> str:
     """
     Accepts an image path, performs OCR, and saves the extracted text
     as a list of strings (line by line) in a JSON file.
@@ -54,14 +54,12 @@ def image_to_json(image_path: str, output_filepath: str) -> str:
         return f"An unexpected error occurred: {str(e)}"
 
 
-# --- Example Usage ---
-# 1. Define the input image path (use 'r' for raw string)
-image_file = r'C:\Users\admin\OneDrive\Desktop\mini_project\frontend\uploads\1762797344275.jpg'
-
-# 2. Define the output JSON file path (use 'r' for raw string)
-output_file = r'C:\Users\admin\OneDrive\Desktop\mini_project\backend\result.json'
-
-# Execute the function and print the status message
-status_message = image_to_json(image_file, output_file)
-
-print(status_message)
+if __name__ == "__main__":
+    import sys
+    if len(sys.argv) > 1:
+        image_file = sys.argv[1]
+        output_file = r'C:\Users\admin\OneDrive\Desktop\mini_project\backend\result.json'
+        status_message = image_to_json(image_file, output_file)
+        print(status_message)
+    else:
+        print("Error: No image path provided")

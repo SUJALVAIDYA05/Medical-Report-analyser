@@ -35,14 +35,6 @@
 
             <form id="signupForm" novalidate>
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="name" placeholder="Full Name" required>
-                    <label for="name">Full Name</label>
-                    <div class="invalid-feedback">
-                        Please enter your full name.
-                    </div>
-                </div>
-
-                <div class="form-floating">
                     <input type="email" class="form-control" id="email" placeholder="Email Address" required>
                     <label for="email">Email Address</label>
                     <div class="invalid-feedback">
@@ -51,25 +43,14 @@
                 </div>
 
                 <div class="form-floating position-relative">
-                    <input type="password" class="form-control" id="password" placeholder="Password" required minlength="8">
+                    <input type="password" class="form-control" id="password" placeholder="Password" required minlength="6">
                     <label for="password">Password</label>
-                    <span class="password-toggle" onclick="togglePassword()">
-                        <i class="far fa-eye" id="toggleIcon"></i>
-                    </span>
                     <div class="invalid-feedback">
-                        Password must be at least 8 characters long.
+                        Password must be at least 6 characters long.
                     </div>
                 </div>
 
-                <div class="form-floating">
-                    <input type="number" class="form-control" id="age" placeholder="Age" required min="13" max="120">
-                    <label for="age">Age</label>
-                    <div class="invalid-feedback">
-                        Please enter a valid age (13-120).
-                    </div>
-                </div>
-
-            
+                <div id="errorMsg" class="text-danger mb-3"></div>
 
                 <button type="submit" class="btn btn-signup">
                     Sign Up
@@ -97,7 +78,7 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    
+    <script type="module" src="/js/signup.js"></script>
 </body>
 </html>
 
