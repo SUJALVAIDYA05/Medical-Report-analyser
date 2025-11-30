@@ -1,26 +1,5 @@
 {
-    "image_source": "1763732530519.jpg",
-    "extracted_text": [
-        "LABORATORY REPORT",
-        "HEMATOLOGY",
-        "TEST NORMAL VALUE TEST VALUE",
-        "Hemoglobin Men-14 to 18 gm\" 9.3gm%/o",
-        "Women -12 tol6gm'/o",
-        "Total WBC Count 4,000 to 12,000 cells/cumm 4,800cells/cumm",
-        "Differential Count",
-        "Polymorphs 38 to 74% 46%",
-        "Lymphocytes 25 to 45% 44%",
-        "Eosinophils 01 to 06% 01%",
-        "Monocytes 02 to 10% 09%",
-        "Basophils 00 to 01% 00%",
-        "RBC Count 3.5 to 5.5millions/cu.mm 2.9millions/cu.mm",
-        "PCV Men-42 .0to 52.0 % 28.9%",
-        "Women -37.0 to47.0%",
-        "MCV 92.0 to 98.0 fl 98.0f1",
-        "MCH 26.0 to 34.0 Pg 31.4pg",
-        "MCHC 31.0 to 38.0 g/dl 32.0g/dI",
-        "Platelet Count 1,50,000 to 4,00,000 cells/eumm  4,21,000 cells/cumm",
-        "tthe F"
-    ],
-    "line_count": 20
+    "image_source": "1764439630278.jpg",
+    "extracted_text": [],
+    "line_count": 0
 }

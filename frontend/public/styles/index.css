@@ -1,11 +1,55 @@
-.head{
-    background-color:#508beb;
+/* ========================================
+   Design System Variables & Reset
+======================================== */
+:root {
+    --primary-color: #667eea;
+    --primary-dark: #5a6fd8;
+    --secondary-color: #764ba2;
+    --accent-color: #11998e;
+    --accent-light: #38ef7d;
+    --success-color: #4caf50;
+    --danger-color: #dc3545;
+    --warning-color: #fd7e14;
+    --light-bg: #f5f9fc;
+    --white: #ffffff;
+    --text-dark: #2c3e50;
+    --text-muted: #6c757d;
+    --border-color: #e0e0e0;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
+    --transition: all 0.3s ease;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-.txt{
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* ========================================
+   Header & Navigation
+======================================== */
+.head {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    box-shadow: var(--shadow);
+}
+
+.txt {
     color: white;
     text-decoration: none;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.txt:hover {
+    color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-1px);
 }
 .mxx{
     margin-left:10% ;

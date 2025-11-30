@@ -5,10 +5,12 @@ import os
 
 # --- IMPORTANT SETUP ---
 # Set the path to your Tesseract installation
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+import platform
+if platform.system() == 'Windows':
+    pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 # -----------------------
 
-def image_to_json(image_path: str, output_filepath: str = r'C:\Users\admin\OneDrive\Desktop\mini_project\backend\result.json') -> str:
+def image_to_json(image_path: str, output_filepath: str = None) -> str:
     """
     Accepts an image path, performs OCR, and saves the extracted text
     as a list of strings (line by line) in a JSON file.
@@ -20,6 +22,8 @@ def image_to_json(image_path: str, output_filepath: str = r'C:\Users\admin\OneDr
     Returns:
         A confirmation message or an error message.
     """
+    if output_filepath is None:
+        output_filepath = os.path.join(os.path.dirname(__file__), 'result.json')
     if not os.path.exists(image_path):
         return f"Error: Image file not found at: {image_path}"
 
@@ -58,7 +62,11 @@ if __name__ == "__main__":
     import sys
     if len(sys.argv) > 1:
         image_file = sys.argv[1]
-        output_file = r'C:\Users\admin\OneDrive\Desktop\mini_project\backend\result.json'
+        # Accept optional output path from command line, default to result.json
+        if len(sys.argv) > 2:
+            output_file = sys.argv[2]
+        else:
+            output_file = os.path.join(os.path.dirname(__file__), 'result.json')
         status_message = image_to_json(image_file, output_file)
         print(status_message)
     else:
